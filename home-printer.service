@@ -1,0 +1,23 @@
+[Unit]
+Description=Home Printer web app
+After=network-online.target cups.service
+Wants=network-online.target
+Requires=cups.service
+
+[Service]
+Type=simple
+User=__APP_USER__
+Group=__APP_GROUP__
+WorkingDirectory=__APP_DIR__
+EnvironmentFile=/etc/home-printer.env
+ExecStart=__APP_DIR__/.venv/bin/gunicorn --workers 1 --threads 4 --bind __BIND__ app:app
+Restart=on-failure
+RestartSec=3
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadOnlyPaths=__APP_DIR__
+
+[Install]
+WantedBy=multi-user.target

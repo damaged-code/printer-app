@@ -1,0 +1,11 @@
+{
+  NAME "job attrs"
+  OPERATION Get-Job-Attributes
+  GROUP operation-attributes-tag
+  ATTR charset attributes-charset utf-8
+  ATTR language attributes-natural-language en
+  ATTR uri printer-uri $uri
+  ATTR integer job-id $job
+  ATTR keyword requested-attributes job-state,job-state-reasons,job-impressions,job-impressions-completed,job-media-sheets,job-media-sheets-completed
+  STATUS successful-ok
+}
